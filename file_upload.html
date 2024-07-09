@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Uploader</title>
+  <link rel="stylesheet" href="file.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>File Uploader</h1>
+    <div id="file-drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)">
+      <h2>Browse a file to upload</h2>
+      <input type="file" id="file" class="file-input" name="file" onchange="handleFiles(this.files)" required>
+      <label for="file" class="custom-file-upload">Choose File</label>
+      <h2>Upload file</h2>
+      <button onclick="uploadFile()">Upload</button>
+    </div>
+    <section class="progress-area"></section>
+    <section class="uploaded-area"></section>
+  </div>
+  <script>
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    function drop(event) {
+      event.preventDefault();
+      const files = event.dataTransfer.files;
+      handleFiles(files);
+    }
+
+    function handleFiles(files) {
+      const file = files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+      fetch('/uploadfile', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log(result); // Log the result or update UI accordingly
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+
+    function uploadFile() {
+      const inputElement = document.getElementById('file');
+      const file = inputElement.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+      fetch('/uploadfile', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = '/fileuploader'; // Redirect to the fileuploader route after successful upload
+        } else {
+          console.error('Error:', response.statusText);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
+</body>
+</html>
