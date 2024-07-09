@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Enriching Question Bank</h1>
+    <div class="button-container">
+      <button class="big-button" onclick="generateQuestionPaper()">Generate Question Paper</button>
+      <button class="big-button" onclick="uploadQuestionPaper()">Upload Question Paper</button>
+      <button class="big-button" onclick="searchQuestions()">Search Questions</button> <!-- Added Search Questions button -->
+    </div>
+    <div class="register-link">
+        <p>Need to logout ? <a href="{{ url_for('register') }}">Logout</a></p>
+      </div>
+   </div>
+
+  <script>
+    function generateQuestionPaper() {
+      window.location.href = "{{ url_for('preview') }}";
+    }
+
+    function uploadQuestionPaper() {
+      window.location.href = "{{ url_for('uploadfile') }}";
+    }
+
+    function searchQuestions() {
+      window.location.href = "{{ url_for('search') }}"; <!-- Added function to redirect to search page -->
+    }
+  </script>
+</body>
+</html>
