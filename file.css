@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(840294-wallpaper-of-study.jpg) no-repeat;
+  align-items: center;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.wrapper {
+  width: 800px;
+  height: 370px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255,.5);
+  backdrop-filter: blur(25px);
+  color: #fff;
+  text-align: center;
+  border-radius: 12px;
+  padding: 30px 40px;
+  border: 2px dashed #ccc;
+}
+
+#file-drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: transparent;
+  position: relative;
+}
+
+h1, h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.file-input {
+  opacity: 0;
+  width: 100%;
+  height: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+button {
+  width: auto;
+  padding: 10px 20px;
+  background-color:white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.progress-area, .uploaded-area {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 10px;
+}
